@@ -217,7 +217,7 @@ if (XRegExp) {
     // Accepts a string and an array of regexes; returns the result of using each successive regex
     // to search within the matches of the previous regex. The array of regexes can also contain
     // objects with `regex` and `backref` properties, in which case the named or numbered back-
-    // references specified are passed forward to the next regex or returned. E.g.:
+    // references specified are passed forward to the keep regex or returned. E.g.:
     // var xregexpImgFileNames = XRegExp.matchChain(html, [
     //     {regex: /<img\b([^>]+)>/i, backref: 1}, // <img> tag attributes
     //     {regex: XRegExp('(?ix) \\s src=" (?<src> [^"]+ )'), backref: "src"}, // src attribute values

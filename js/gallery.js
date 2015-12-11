@@ -21,7 +21,7 @@ var Gallery = (function () {
 		this.slides = this.gallery.querySelectorAll('.GalleryContent');
 
 		/**
-		 * Get, update and set the current to next slide
+		 * Get, update and set the current to keep slide
 		 */
 		this.nextSlide = function () {
 

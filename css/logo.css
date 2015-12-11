@@ -5,8 +5,6 @@
 	display: -ms-flexbox;
 	display: -webkit-flex;
 	display: flex;
-	-webkit-justify-content: flex-end;
-	justify-content: flex-end;
 }
 
 .is-portrait .Logo {
@@ -22,7 +20,7 @@
 }
 
 .Logo-svg {
-	width: 8em;
+	width: 12em;
 }
 
 .Logo-svg-main,
@@ -30,19 +28,51 @@
 	display: none;
 }
 
-.Logo-svg-main-marked,
-.Logo-svg-lines {
-	fill: #e53935;
-}
-
-.Logo-svg-text {
-	fill: #000000;
-}
-
-.Logo--white .Logo-svg-main-marked,
-.Logo--white .Logo-svg-lines,
-.Logo--white .Logo-svg-text {
+.Logo-svg {
 	fill: #ffffff;
+}
+
+.RaizDoBrasilTypeDo,
+.RaizDoBrasilTypeRaiz,
+.RaizDoBrasilLogo_lineRaiz,
+.RaizDoBrasilTypeBrasil,
+.RaizDoBrasilLogo_lineGreen,
+.RaizDoBrasilLogo_lineYellow {
+	opacity: 1;
+	-webkit-transition: opacity 1.5s ease .2225s;
+	-moz-transition: opacity 1.5s ease .2225s;
+	-ms-transition: opacity 1.5s ease .2225s;
+	-o-transition: opacity 1.5s ease .2225s;
+	transition: opacity 1.5s ease .2225s;
+}
+
+.Splash.is-visible .RaizDoBrasilTypeDo,
+.Splash.is-visible .RaizDoBrasilTypeRaiz,
+.Splash.is-visible .RaizDoBrasilLogo_lineRaiz,
+.Splash.is-visible .RaizDoBrasilTypeBrasil,
+.Splash.is-visible .RaizDoBrasilLogo_lineGreen,
+.Splash.is-visible .RaizDoBrasilLogo_lineYellow {
+	opacity: 0;
+}
+
+.RaizDoBrasilTypeDo {
+	fill:#726658;
+}
+
+.RaizDoBrasilTypeRaiz,
+.RaizDoBrasilLogo_lineRaiz {
+	fill:#594A42;
+}
+
+.RaizDoBrasilTypeBrasil {
+	fill:#C2B59B;
+}
+
+.RaizDoBrasilLogo_lineGreen {
+	fill:#009D5F;
+}
+.RaizDoBrasilLogo_lineYellow {
+	fill:#E3D200;
 }
 
 @media (max-height: 24em) {
@@ -56,7 +86,7 @@
 @media (min-width: 96em) {
 
 	.Logo-svg {
-		width: 10em;
+		width: 21em;
 	}
 
 	.Logo-select-area {

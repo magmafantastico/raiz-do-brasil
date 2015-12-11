@@ -1,0 +1,43 @@
+/* Next */
+
+.Next {
+	display: none;
+	height: 100%;
+	position: fixed;
+	width: 100%;
+	z-index: 1000;
+}
+
+.Next.is-active {
+	display: block;
+}
+
+.NextBackground {
+	position: absolute;
+	height: 100%;
+	opacity: 0;
+	width: 100%;
+}
+
+.Next.is-visible .NextBackground {
+	opacity: 1;
+	position: absolute;
+}
+
+.Next.is-fading .NextBackground {
+	-webkit-transition: opacity 2s ease-out .25s;
+	-moz-transition: opacity 2s ease-out .25s;
+	-ms-transition: opacity 2s ease-out .25s;
+	-o-transition: opacity 2s ease-out .25s;
+	transition: opacity 2s ease-out .25s;
+}
+
+.NextTrigger {
+	cursor: pointer;
+}
+
+.NextInner {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
