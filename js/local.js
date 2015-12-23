@@ -36,7 +36,7 @@ var Local = (function() {
 
 	Local.prototype.open = function() {
 
-		this.modal.open();
+		if (this.modal) this.modal.open();
 
 		if (!this.map.mapInited) this.initMap();
 

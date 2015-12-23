@@ -207,7 +207,7 @@
 
 			<li class="MenuItem">
 
-				<a href="#" class="MenuItem-select-area">
+				<a href="#" class="MenuItem-select-area" id="recipes-anchor">
 
 					<span>Receitas</span>
 
@@ -227,7 +227,7 @@
 
 			<li class="MenuItem">
 
-				<a href="#" class="MenuItem-select-area">
+				<a href="#" class="MenuItem-select-area" id="contact-anchor">
 
 					<span>Fale Conosco</span>
 
@@ -311,6 +311,76 @@
 
 	</article>
 
+	<article id="reps" class="Block Block--reps Reps flex flex-column child-width-100">
+
+	</article>
+
+	<article id="contact" class="Block Block--contact Contact flex flex-wrap child-width-100">
+
+		<section class="Container flex flex-wrap">
+
+			<section id="contact-form" class="ContactForm flex flex-column">
+
+				<div class="Contact-title">
+					<h1>Entre em contato conosco</h1>
+				</div>
+
+				<div class="ContactForm-wrapper ContactForm-wrapper--personal-info flex flex-column">
+
+					<div class="ContactForm-field ContactForm-field--name">
+						<input class="name-text" type="text" size="26" name="tNome" id="cNome" maxlength="50"
+						       placeholder="Nome"
+						       title="Ops, o campo nome deve ser preenchido corretamente :)"
+						       x-moz-errormessage="Ops, o campo nome deve ser preenchido corretamente :)"/>
+						<label class="name" for="cNome">Nome</label>
+					</div>
+
+					<div class="ContactForm-field ContactForm-field--email">
+						<input class="email-text" type="text" size="26" name="tEmail" id="cPhone" maxlength="60"
+						       placeholder="Telefone"
+						       title="Ops, o campo email deve ser preenchido corretamente :)"
+						       x-moz-errormessage="Ops, o campo email deve ser preenchido corretamente :)"/>
+						<label class="phone" for="cPhone">Email</label>
+					</div>
+
+					<div class="ContactForm-field ContactForm-field--email">
+						<input class="email-text" type="email" size="26" name="tEmail" id="cEmail" maxlength="60"
+						       placeholder="E-mail"
+						       title="Ops, o campo email deve ser preenchido corretamente :)"
+						       x-moz-errormessage="Ops, o campo email deve ser preenchido corretamente :)"/>
+						<label class="email" for="cEmail">Email</label>
+					</div>
+
+				</div>
+
+				<div class="ContactForm-wrapper ContactForm-wrapper--personal-info flex flex-column">
+
+					<div class="ContactForm-field ContactForm-field--message">
+					<textarea class="lato" name="tMensagem" id="cMensagem" cols="36"
+					          placeholder="Digite a sua mensagem"
+					          title="Ops, o campo mensagem deve ser preenchido corretamente :)"
+					          x-moz-errormessage="Ops, o campo mensagem deve ser preenchido corretamente :)"></textarea>
+						<label class="text-message" for="cMensagem">Mensagem</label>
+					</div>
+
+					<div class="ContactForm-field ContactForm-field--submit flex align-end">
+						<input id="cSubmit" class="ContactForm-submit" name="ir" type="submit" value="Enviar"/>
+					</div>
+
+				</div>
+
+			</section>
+
+			<section class="ContactMap flex flex-column">
+
+				<div id="local-map" class="ContactMap-map brown"></div>
+
+			</section>
+
+		</section>
+
+	</article>
+
 </main>
 
 <footer class="Footer">
@@ -334,15 +404,52 @@
 
 </footer>
 
+<script src="dist/js/jquery-2.1.4.min.js"></script>
+
 <script src="js/f.js"></script>
 <script src="js/keep.js"></script>
 <script src="js/logo.js"></script>
 <script src="js/nav.js"></script>
 <script src="js/main.js"></script>
 <script src="js/anchor.js"></script>
+<script src="js/contact.js"></script>
+<script src="js/maps.js"></script>
+<script src="js/local.js"></script>
 <script>
 
 	var RaizDoBrasil = (function() {
+
+		var repsData = [
+			{
+				name: 'promafa',
+				title: 'PROMAFA - Produtos de Mandioca FADEL LTDA.',
+				address: 'R. São Paulo, 43, Palmital - SP, 19970-000, Brasil',
+				city: 'palmital',
+				state: 'sp',
+				zip: '19970-000',
+				country: 'brasil',
+				phone: '+55 18 3351 5050',
+				email: {
+					string: 'rep@promafa.com.br',
+					url: 'mailto:rep@promafa.com.br'
+				},
+				website: {
+					string: 'www.promafa.com.br',
+					url: 'http://www.promafa.com.br'
+				},
+				position: {
+					lat: -22.7753073,
+					lng: -50.2077834
+				}
+			}
+		];
+
+		var mapsScript = document.getElementById('maps-script');
+
+		var center = {
+			lat: -22.7753073,
+			lng: -50.2077834
+		};
 
 		function RaizDoBrasil() {
 
@@ -381,7 +488,13 @@
 				{
 					menuItem: document.getElementById('reps-anchor'),
 					fallback: function() {
-
+						self.layout.showBlock('reps', false);
+					}
+				},
+				{
+					menuItem: document.getElementById('contact-anchor'),
+					fallback: function() {
+						self.layout.showBlock('contact', false);
 					}
 				}
 			], document.documentElement);
@@ -392,13 +505,14 @@
 				{
 					anchor: 'contato',
 					fallback: function() {
-						console.log('abrindo formulario de contato')
+						self.layout.showBlock('contact', false);
+						self.local.open();
 					}
 				},
 				{
-					anchor: 'como-chegar',
+					anchor: 'representantes',
 					fallback: function() {
-						console.log('mostrando o mapa');
+						self.layout.showBlock('reps', false);
 					}
 				},
 				{
@@ -417,6 +531,21 @@
 				self.layout.showBlock('about', false);
 			});
 
+			// Contact Form
+			this.contactForm = new Contact(document.getElementById('contact-form'), {
+				url: 'i/mail/'
+			});
+
+			// Maps instance
+			this.mapLocal = new Maps(document.getElementById('local-map'), mapsScript, {
+				scrollwheel: false,
+				center: center,
+				zoom: 15
+			});
+
+			// Local instance
+			this.local = new Local(this.mapLocal, false, document.getElementById('contact-anchor'));
+
 		}
 
 		RaizDoBrasil.prototype.init = function() {
@@ -428,6 +557,10 @@
 			this.anchor.init();
 
 			this.nav.init();
+
+			this.contactForm.init();
+
+			this.local.init();
 
 		};
 

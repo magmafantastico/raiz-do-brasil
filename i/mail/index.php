@@ -67,13 +67,13 @@ $mailer->SMTPSecure = 'ssl';
 $mailer->Port = 465;
 
 // set from, to and carbon copy (hidden)
-$mailer->setFrom('mailman@letsmowe.com', 'La Lolla - MailMan');
+$mailer->setFrom('mailman@letsmowe.com', 'Raiz do Brasil - MailMan');
 $mailer->addAddress($_GET['mail'], $_GET['name']);
 $mailer->addBCC('joseeduardobarros@gmail.com', 'Eduardo Barros');
 
 // set type, subject and body
 $mailer->isHTML(true);
-$mailer->Subject = 'Requisição de contato - La Lolla';
+$mailer->Subject = 'Requisição de contato - Raiz do Brasil';
 $mailer->Body = $_GET['message'];
 $mailer->AltBody = $_GET['message'];
 

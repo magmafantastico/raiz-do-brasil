@@ -11,28 +11,13 @@
 	display: flex;
 }
 
-.ContactInfo,
+.ContactMap,
 .ContactForm {
+	padding: 0 1em;
 	height: 100%;
 	width: 100%;
-	min-width: 21em;
 	overflow-y: auto;
 	overflow-x: hidden;
-}
-
-/* Contact Info */
-
-.ContactInfoList {
-	display: -webkit-box;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-flex-direction: column;
-	-ms-flex-direction: column;
-	flex-direction: column;
-	-webkit-align-items: center;
-	align-items: center;
 }
 
 /* Contact Form */
@@ -47,14 +32,13 @@
 .Contact-title {
 	font-size: 1em;
 	width: 100%;
-	padding: 0 3.75em;
 	margin: 0 0 1em;
 }
 
 .Contact-title h1 {
-	color: #b71c1c;
+	color: #3e2723;
 	font-size: 2.25em;
-	font-weight: 300;
+	font-weight: 900;
 	text-align: center;
 }
 
@@ -89,27 +73,27 @@
 }
 
 .ContactForm-field ::-webkit-input-placeholder {
-	color: #607d8b;
+	color: #795548;
 }
 
 .ContactForm-field :-moz-placeholder {
-	color: #607d8b;
+	color: #795548;
 }
 
 .ContactForm-field ::-moz-placeholder {
-	color: #607d8b;
+	color: #795548;
 }
 
 .ContactForm-field :focus::-webkit-input-placeholder {
-	color: #b0bec5;
+	color: #8d6e63;
 }
 
 .ContactForm-field :focus:-moz-placeholder {
-	color: #b0bec5;
+	color: #8d6e63;
 }
 
 .ContactForm-field :focus::-moz-placeholder {
-	color: #b0bec5;
+	color: #8d6e63;
 }
 
 .ContactForm-field input,
@@ -125,7 +109,7 @@
 .ContactForm-field textarea {
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
-	border-bottom-color: #e0e0e0;
+	border-bottom-color: #795548;
 	margin: 1px 0 .5em;
 	order: 2;
 	-webkit-transition: background .3s;
@@ -138,14 +122,14 @@
 .ContactForm-field input:focus,
 .ContactForm-field textarea:focus {
 	border-bottom-width: 2px;
-	border-bottom-color: #b71c1c;
+	border-bottom-color: #795548;
 	margin-top: 0;
 }
 
 .ContactForm-field input:invalid,
 .ContactForm-field textarea:invalid {
 	border-bottom-width: 2px;
-	border-bottom-color: #b71c1c;
+	border-bottom-color: #795548;
 	background: none;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
@@ -163,7 +147,7 @@
 }
 
 .ContactForm-field label {
-	color: #b71c1c;
+	color: #3e2723;
 	display: none;
 	font-size: .75em;
 	padding: 1.333333333em 0 0;
@@ -175,7 +159,7 @@
 }
 
 .ContactForm-field textarea:focus + label {
-	color: #b71c1c;
+	color: #3e2723;
 }
 
 .ContactForm-field textarea {
@@ -187,7 +171,7 @@
 }
 
 .ContactForm-field .ContactForm-submit {
-	color: #d50000;
+	color: #795548;
 	cursor: pointer;
 	border: none;
 	padding: .625em .5em;
@@ -203,10 +187,15 @@
 	margin: .5em;
 }
 
+.ContactMap-map {
+	height: 8em;
+	margin-bottom: 2.25em;
+	width: 100%;
+}
+
 @media (min-width: 36em) {
 
 	.ContactForm-wrapper {
-		padding: 0 2.25em;
 		width: 100%;
 	}
 
@@ -214,24 +203,23 @@
 
 @media (min-width: 48em) {
 
-	.ContactInfo,
+	.ContactMap,
 	.ContactForm {
 		width: 50%;
 	}
 
 	.ContactForm {
-		border-left: dashed 2px #ef9a9a;
-		padding: 0 2.25em;
 		border-top: none;
+	}
+
+	.ContactMap-map {
+		height: 14em;
+		margin-bottom: 1em;
 	}
 
 }
 
 @media (min-width: 72em) {
-
-	.ContactForm {
-		padding: 0 4.5em;
-	}
 
 	.ContactForm-field textarea {
 		font-size: 1em;
@@ -241,12 +229,19 @@
 		padding: .5em 0;
 	}
 
+	.ContactMap-map {
+		height: 16em;
+		margin: 2.25em 0 1em;
+		padding: 0 1em;
+	}
+
 }
 
 @media (min-width: 96em) {
 
-	.ContactForm {
-		padding: 0 6em;
+	.ContactMap-map {
+		height: 24em;
+		margin-bottom: 2.25em;
 	}
 
 }
