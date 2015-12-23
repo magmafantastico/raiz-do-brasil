@@ -1,0 +1,25 @@
+.Footer {
+	max-width: 60em;
+	margin: 0 auto;
+	padding: 2.25em 0;
+	-webkit-transition: opacity .5s ease 1s;
+	-moz-transition: opacity .5s ease 1s;
+	-ms-transition: opacity .5s ease 1s;
+	-o-transition: opacity .5s ease 1s;
+	transition: opacity .5s ease 1s;
+}
+
+.is-splashing .Footer {
+	opacity: 0;
+}
+
+.FooterCopyright {
+	width: 100%;
+	text-align: center;
+	margin: 1em 0;
+}
+
+.FooterCopyright span {
+	text-align: center;
+	font-size: .875em;
+}

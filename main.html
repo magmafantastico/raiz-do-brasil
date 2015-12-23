@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<meta charset="UTF-8">
+<title>Raiz do Brasil</title>
+<title>Raiz do Brasil</title>
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+<script src="dist/js/villa.min.js"></script>
+<link rel="stylesheet" href="dist/css/villa.min.css"/>
+<link rel="stylesheet" href="css/_.css"/>
+<link rel="stylesheet" href="css/element.css"/>
+<link rel="stylesheet" href="css/icon.css"/>
+<link rel="stylesheet" href="css/header.css"/>
+<link rel="stylesheet" href="css/main.css"/>
+<link rel="stylesheet" href="css/main-block.css"/>
+<link rel="stylesheet" href="css/main-container.css"/>
+<link rel="stylesheet" href="css/main-elements.css"/>
+<link rel="stylesheet" href="css/modal.css"/>
+<link rel="stylesheet" href="css/info.css"/>
+<link rel="stylesheet" href="css/contact.css"/>
+<link rel="stylesheet" href="css/local.css"/>
+<link rel="stylesheet" href="css/hero.css"/>
+<link rel="stylesheet" href="css/gallery.css"/>
+<link rel="stylesheet" href="css/products.css"/>
+<link rel="stylesheet" href="css/reps.css"/>
+<!--[if lt IE 9]>
+<link rel="stylesheet" type="text/css" href="dist/css/material-colors.css"/>
+<link rel="stylesheet" type="text/css" href="dist/css/villa-cross.min.css"/>
+<script src="dist/js/html5shiv.js"></script>
+<script src="dist/js/html5shiv-printshiv.js"></script>
+<script src="dist/js/classList.min.js"></script>
+<![endif]-->
+<script src="js/is.js"></script>
+<script id="maps-script"></script>
+
+<main id="main" class="Main">
+
+	<article id="about" class="Block Block--about About flex is-active">
+
+		<section class="Container AboutIntro flex child-grow-1 flex-wrap child-flex justify-start">
+
+			<div class="AboutIntro-text flex justify-start font-brown-900">
+
+				<div class="Paragraph Paragraph--half">
+
+					<h1 class="centered font-brown-800">Sobre Nós</h1>
+
+					<p>
+						A mandioca é a quarta cultura de produção de alimentos mais importante do mundo, presente principalmente na região tropical. A raiz da planta e seus subprodutos são consumidos por mais de 800 milhões de pessoas.
+					</p>
+
+					<p>
+						Neste cenário, surge a Promafa, tradicional indústria com origem no final dos anos 60 em Palmital, interior de São Paulo. A Raiz do Brasil é uma das marcas da Promafa e tem sua história de sucesso baseada no comprometimento, dedicação e empreendedorismo dos seus fundadores, produzindo sempre alimentos de qualidade superior.
+					</p>
+
+					<p>
+						Seja bem-vindo!
+					</p>
+
+				</div>
+
+			</div>
+
+		</section>
+
+	</article>
+
+	<article id="products" class="Block Block--products Products flex flex-column child-width-100">
+
+		<section class="Container ProductsAbout flex child-grow-1 flex-wrap child-flex">
+
+			<div class="ProductsAbout-text align-center flex-column font-brown-900">
+
+				<h1 class="centered font-brown-800">produtos</h1>
+
+				<div class="Paragraph">
+
+					<p>
+						Os produtos Raiz do Brasil são elaborados com tecnologia adequada, qualidade total e respeito ao indivíduo, à sociedade e ao meio ambiente. Como resultado oferecemos produtos diferenciados, que garantem satisfação e o melhor alimento na mesa dos nossos clientes.
+					</p>
+
+					<p>
+						Aproveite a visita. Acompanhe nossas novidades, receitas e experimente os produtos Raiz do Brasil.
+					</p>
+
+				</div>
+
+			</div>
+			<div class="ProductsAbout-image justify-center">
+
+				<img src="img/tapioca.png" alt=""/>
+
+			</div>
+
+		</section>
+
+		<section class="Container ProductsList flex justify-center">
+
+			<img src="img/products.png" alt=""/>
+
+		</section>
+
+	</article>
+
+</main>
+
+<script src="js/f.js"></script>
+<script src="js/anchor.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+
+	var layout = new Layout(document.getElementById('main'));
+
+	var anchor = new Anchor([
+		{
+			anchor: 'contato',
+			fallback: function() {
+				console.log('abrindo formulario de contato')
+			}
+		},
+		{
+			anchor: 'como-chegar',
+			fallback: function() {
+				console.log('mostrando o mapa');
+			}
+		},
+		{
+			anchor: 'sobre',
+			fallback: function() {
+				layout.showBlock('about', false);
+			}
+		},
+		{
+			anchor: 'produtos',
+			fallback: function() {
+				layout.showBlock('products', false);
+			}
+		}
+	], false);
+
+	layout.init();
+
+	anchor.init();
+
+</script>
+
+</html>

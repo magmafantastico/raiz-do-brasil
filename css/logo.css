@@ -7,16 +7,21 @@
 	display: flex;
 }
 
-.is-portrait .Logo {
-	-webkit-justify-content: center;
-	justify-content: center;
-	-webkit-align-items: center;
-	align-items: center;
-	height: 50vh;
+.Logo--header {
+	-webkit-transition: min-height .6s ease-in-out;
+	-moz-transition: min-height .6s ease-in-out;
+	-ms-transition: min-height .6s ease-in-out;
+	-o-transition: min-height .6s ease-in-out;
+	transition: min-height .6s ease-in-out;
+	min-height: 0;
+}
+
+.is-splashing .Logo--header {
+	min-height: 100vh;
 }
 
 .Logo-select-area {
-	padding: 1.125em;
+	padding: 1.125em 0;
 }
 
 .Logo-svg {
@@ -78,7 +83,7 @@
 @media (max-height: 24em) {
 
 	.Logo-select-area {
-		padding: 1em;
+		padding: 2.25em 0;
 	}
 
 }
@@ -90,7 +95,7 @@
 	}
 
 	.Logo-select-area {
-		padding: 2.25em;
+		padding: 3em 0;
 	}
 
 }

@@ -1,0 +1,7 @@
+/* Main Container */
+
+.Container {
+	margin: 0 auto;
+	max-width: 72em;
+	width: 100%;
+}

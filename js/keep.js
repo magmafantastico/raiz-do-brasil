@@ -60,13 +60,10 @@ var Keep = (function() {
 
 	Keep.prototype.init = function() {
 
-		var self = this;
+		if (document.hasFocus())
+			this.fadeOut();
 
-		addListener(window, 'focus', 'onfocus', function() {
-			self.fadeOut();
-		}, false);
-
-		this.fadeOut();
+		addListener(window, 'focus', 'onfocus', this.focusCtrl, false);
 
 	};
 

@@ -1,0 +1,12 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteRule receitas$ ./index.html
+RewriteRule contato$ ./index.html
+RewriteRule sobre$ ./index.html
+RewriteRule comochegar$ ./index.html
+RewriteRule como-chegar$ ./index.html
+RewriteRule produtos$ ./index.html

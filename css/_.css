@@ -3,3 +3,15 @@
  * Copyright 2013-2016 Kabana's Info Developers
  * Licensed under MIT (https://github.com/magmafantastico/promafa/blob/master/LICENSE)
  */
+
+/* Foundation */
+
+html,
+body {
+	overflow-x: hidden;
+}
+
+html.no-overflow,
+html.no-overflow body {
+	overflow-y: hidden;
+}

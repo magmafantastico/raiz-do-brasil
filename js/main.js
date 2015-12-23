@@ -1,5 +1,5 @@
 /*!
- * Promafa Layout v1.0.0 (http://letsmowe.org/)
+ * Raiz do Brasil Layout v1.0.0 (http://letsmowe.org/)
  * Copyright 2013-2015 Noibe Developers
  * Licensed under MIT (https://github.com/noibe/villa/blob/master/LICENSE)
  */
@@ -12,153 +12,173 @@ var Layout = (function() {
 
 		this.viewport = viewport;
 
+		this.activeBlock = false;
+
 		this.ctrlResize = function() {
 
-			if (isPortrait()) document.body.classList.add('mobile');
-			else {
-
-				document.body.classList.remove('mobile');
-				self.disableNav();
-
-			}
+			self.resizeMain();
 
 		};
 
 	}
 
 	/**
-	 * Init the main nav
+	 * Resize the Layout size based on the active block
 	 */
-	main.initNav = function() {
+	Layout.prototype.resizeMain = function () {
 
-		main.navToggle = document.getElementById('toggle');
-		main.navToggle.addEventListener('click', main.toggleNav);
-
-		main.menu = document.getElementById('main-menu');
-
-		main.menuItems = main.menu.querySelectorAll('.menu-item');
-
-		for (var i = main.menuItems.length; i--; )
-			main.menuItems[i].addEventListener('click', main.ctrlMenuItemClick);
+		this.viewport.style.height = this.activeBlock.offsetHeight + 'px';
 
 	};
 
 	/**
-	 * Init the main header
+	 * If 'o' is a element, it returns the element
+	 * Else return false
+	 * @param o {object|string}
+	 * @return {object|boolean}
 	 */
-	main.initHeader = function () {
+	Layout.prototype.isObject = function(o) {
 
-		// get the logo
-		main.logo = document.getElementById('logo');
+		if (o) {
 
-		// get logo wrappers
-		main.headerLogoWrapper = document.getElementById('logo-wrapper');
-		main.navLogoWrapper = document.getElementById('nav-logo-wrapper');
+			if (typeof o == 'string') {
 
-		// init header things
-		main.putLogoAt(main.headerLogoWrapper);
-		main.initNav();
+				for (var i = this.block.length; i--; )
+					if (this.block[i].id == o) return this.block[i];
+
+				return false;
+
+			}
+
+			return o;
+
+		}
+
+		return false;
+
+	};
+
+	/**
+	 * Remove the classList of the blocks based on 'c'
+	 * @param c {Array|string}
+	 */
+	Layout.prototype.resetClass = function(c) {
+
+		var classList = c ? typeof c == 'string' ? [c] : c : [];
+
+		console.log(classList);
+
+		for (var i = this.block.length; i--; )
+			for (var j = classList.length; j--; )
+				this.block[i].classList.remove(classList[j]);
+
+	};
+
+	/**
+	 * Hide the param block
+	 * @param block {object|string}
+	 * @param activeBlock {object}
+	 */
+	Layout.prototype.hideBlock = function(block, activeBlock) {
+
+		block.classList.remove('is-visible');
+
+		// wait and translate
+		// is needed to transition be valid
+		setTimeout(function() {
+
+			if (block.id != activeBlock.id)
+				block.classList.remove('is-active');
+
+		}, 600);
+
+
+	};
+
+	/**
+	 * API to show block
+	 * It reset all the active class and show the param block
+	 * The param block can be how 'HTML Object Element' or be how 'the string of ID of element'
+	 * @param block {object|string}
+	 * @param preserveCurrent {boolean}
+	 */
+	Layout.prototype.showBlock = function(block, preserveCurrent) {
+
+		var self = this;
+
+		if (block = this.isObject(block)) {
+
+			// destroy the current active block
+			if (!preserveCurrent)
+				if (this.activeBlock)
+					this.hideBlock(this.activeBlock, block);
+
+			// celebrate the new active block o/
+			this.activeBlock = block;
+
+			// give the active class
+			this.activeBlock.classList.add('is-active');
+
+			this.resizeMain();
+
+			// wait and translate
+			// is needed to transition be valid
+			setTimeout(function() {
+
+				self.activeBlock.classList.add('is-visible');
+
+			}, 0);
+
+		}
+
+	};
+
+	/**
+	 * Show the Active Block
+	 * if has a block with 'is-active' class, it will show this
+	 */
+	Layout.prototype.showActiveBlock = function() {
+
+		var currentActive;
+
+		if (currentActive = this.viewport.querySelector('.Block.is-active'))
+			this.showBlock(currentActive, true);
+
+	};
+
+	/**
+	 * Get the blocks (with .Block class) from the Layout Viewport
+	 * @return {*}
+	 */
+	Layout.prototype.getBlocks = function() {
+
+		var blocks = this.viewport.querySelectorAll('.Block');
+
+		this.block = blocks ? [] : false;
+
+		if (this.block)
+			for (var i = blocks.length; i--; ) {
+				this.block.push(blocks[i]);
+				if (blocks[i].classList.contains('is-active')) this.activeBlock = blocks[i];
+			}
+
+		return this.block;
+
 
 	};
 
 	Layout.prototype.init = function() {
 
-		this.body = document.body;
+		if (this.getBlocks()) {
 
-		this.header = document.getElementById('main-header');
+			addListener(window, 'resize', 'onresize', this.ctrlResize, false);
 
-		addListener(window, 'scroll', 'onscroll', this.ctrlScrollEvent);
+			if (this.activeBlock) this.showActiveBlock();
 
-		window.addEventListener('resize', this.ctrlResize);
-
-		this.initHeader();
+		}
 
 	};
 
 	return Layout;
 
 })();
-
-main.getHeaderDefaultHeight = function() {
-
-	return window.innerHeight * .5;
-
-};
-
-main.setHeaderHeight = function(headerHeight) {
-
-	main.headerHeight = headerHeight;
-
-};
-
-main.updateHeaderHeight = function(headerHeight) {
-
-	main.header.style.height = headerHeight + 'px';
-	return headerHeight;
-
-};
-
-main.goToAnchor = function() {
-
-	//scroll.to(3000);
-
-};
-
-main.ctrlMenuItemClick = function() {
-
-	var t;
-
-	t = 0;
-
-	if (main.body.classList.contains('mobile')) {
-
-		main.toggleNav(false);
-
-		t = 1200;
-
-	}
-
-	setTimeout(main.goToAnchor, t);
-
-};
-
-main.putLogoAt = function (a) {
-
-	a.appendChild(main.logo);
-
-};
-
-main.disableNav = function() {
-
-	main.body.classList.remove('active-nav');
-	main.putLogoAt(main.headerLogoWrapper);
-
-};
-
-main.enableNav = function() {
-
-	main.body.classList.add('active-nav');
-	main.putLogoAt(main.navLogoWrapper);
-
-};
-
-/**
- * Toggle active-nav class
- * If a is true, this function just active/enable the nav
- * @param {boolean} a
- */
-main.toggleNav = function(a) {
-
-	if (typeof a == 'boolean') {
-
-		if (a) main.enableNav();
-		else main.disableNav();
-
-	} else {
-
-		if (main.body.classList.contains('active-nav')) main.disableNav();
-		else main.enableNav();
-
-	}
-
-};
