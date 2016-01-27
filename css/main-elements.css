@@ -1,6 +1,7 @@
 /* Main Elements */
 
-.Main .Paragraph {
+.Main .Paragraph,
+.is-portrait .Main .Paragraph--half {
 	width: 100%;
 }
 

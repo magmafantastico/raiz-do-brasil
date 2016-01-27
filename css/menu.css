@@ -29,6 +29,8 @@
 }
 
 .is-portrait .Menu--portrait-centered {
+	-webkit-flex-direction: column;
+	flex-direction: column;
 	-webkit-align-items: center;
 	align-items: center;
 }

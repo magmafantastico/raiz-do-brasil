@@ -5,3 +5,11 @@
 	max-width: 72em;
 	width: 100%;
 }
+
+@media (max-width: 72em) {
+
+	.Container {
+		padding: 0 1em;
+	}
+
+}

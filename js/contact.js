@@ -37,15 +37,15 @@ var Contact = (function() {
 
 			if (data.sent)
 				self.showMessage();
-			//else
-			//	self.send();
+			else
+				self.send();
 
 		};
 
 		this.asyncErrorCtrl = function(data) {
 
-			console.log('erro');
-			//self.send();
+			//console.log('erro');
+			self.send();
 
 		};
 
@@ -53,7 +53,7 @@ var Contact = (function() {
 
 	Contact.prototype.showMessage = function() {
 
-		console.log('hhee');
+		alert('Sua mensagem foi enviada! Agradecemos o contato! :)');
 
 	};
 

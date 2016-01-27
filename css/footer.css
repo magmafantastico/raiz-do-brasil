@@ -1,4 +1,5 @@
 .Footer {
+	color: #795548;
 	max-width: 60em;
 	margin: 0 auto;
 	padding: 2.25em 0;
@@ -19,7 +20,11 @@
 	margin: 1em 0;
 }
 
+.is-portrait .Footer p,
 .FooterCopyright span {
 	text-align: center;
+}
+
+.FooterCopyright span {
 	font-size: .875em;
 }

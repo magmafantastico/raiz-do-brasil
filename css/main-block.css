@@ -21,7 +21,7 @@
 .Block--about,
 .Block--products,
 .Block--contact {
-	padding: 4.5em 0;
+	padding: 2.25em 0;
 }
 
 .Block.is-active {
@@ -35,4 +35,14 @@
 	-ms-transform: translateX(0);
 	-o-transform: translateX(0);
 	transform: translateX(0);
+}
+
+@media (min-width: 72em) {
+
+	.Block--about,
+	.Block--products,
+	.Block--contact {
+		padding: 4.5em 0;
+	}
+
 }

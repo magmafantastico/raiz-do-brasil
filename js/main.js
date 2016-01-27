@@ -121,6 +121,8 @@ var Layout = (function() {
 
 			this.resizeMain();
 
+			history.pushState(false, this.activeBlock.getAttribute('data-history-id'), this.activeBlock.getAttribute('data-history-id'));
+
 			// wait and translate
 			// is needed to transition be valid
 			setTimeout(function() {

@@ -16,6 +16,10 @@
 	min-height: 0;
 }
 
+.is-portrait .Logo--header {
+	min-height: 33.33333vh;
+}
+
 .is-splashing .Logo--header {
 	min-height: 100vh;
 }
@@ -81,6 +85,10 @@
 }
 
 @media (max-height: 24em) {
+
+	.Logo--header {
+		padding: 6em 0;
+	}
 
 	.Logo-select-area {
 		padding: 2.25em 0;
