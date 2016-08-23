@@ -1,35 +1,48 @@
 {
   "name": "raiz-do-brasil",
   "version": "1.0.0",
-  "description": "Promafa - A Mowe Project",
-  "main": "gulpfile.js",
-  "dependencies": {
-    "gulp": "^3.9.0",
+  "description": "Mowe Foundation Base",
+  "main": "GulpFile.js",
+  "devDependencies": {
+    "browser-sync": "^2.12.5",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "*",
     "gulp-concat": "^2.6.0",
     "gulp-concat-css": "^2.2.0",
-    "gulp-image-resize": "^0.7.1",
+    "gulp-image-resize": "^0.7.2",
     "gulp-jshint": "^1.12.0",
-    "gulp-minify-css": "^1.2.2",
     "gulp-rename": "^1.2.2",
     "gulp-tinypng": "^1.0.2",
-    "gulp-uglify": "^1.5.1"
+    "gulp-uglify": "^1.5.3",
+    "jshint": "^2.9.1"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/noibe/villa.git"
+    "url": "https://github.com/mowekabanas/base.git"
   },
   "keywords": [
-    "villa",
-    "web",
-    "stack"
+    "letsmowe",
+    "mowe",
+    "foundation",
+    "base"
   ],
-  "author": "Eduardo Barros",
+  "author": "Eduardo Barros <dbajrs@noibe.com> (dbarjs.noibe.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/noibe/villa/issues"
+    "url": "https://github.com/mowekabanas/base/issues"
+  },
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-concat-css": "^2.2.0",
+    "gulp-jshint": "^1.12.0",
+    "gulp-image-resize": "^0.7.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-minify-css": "^1.2.2",
+    "gulp-tinypng": "^1.0.2",
+    "gulp-uglify": "^1.5.1"
   }
 }

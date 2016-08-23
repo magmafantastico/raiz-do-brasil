@@ -68,7 +68,10 @@ $mailer->Port = 465;
 
 // set from, to and carbon copy (hidden)
 $mailer->setFrom('mailman@letsmowe.com', 'Raiz do Brasil - MailMan');
-$mailer->addAddress($_GET['mail'], $_GET['name']);
+$mailer->addAddress('Promafa', 'promafa@promafa.com.br');
+$mailer->addAddress('Diego Souza', 'diegosouza@promafa.com.br');
+$mailer->addAddress('Adrieli', 'adrieli@promafa.com.br');
+$mailer->addAddress('SAC', 'sac@raizdobrasil.com.br');
 $mailer->addBCC('joseeduardobarros@gmail.com', 'Eduardo Barros');
 
 // set type, subject and body
