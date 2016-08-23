@@ -36,7 +36,7 @@ const tinypngToken = false;
 
 var source = {
 	content: '*',
-	location: './'
+	location: './src/'
 };
 
 source.css = {
@@ -68,7 +68,7 @@ source.images.largePhotos = {
 
 var dist = {
 	content: '*',
-	location: 'dist/'
+	location: './public/dist/'
 };
 
 dist.css = {
