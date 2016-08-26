@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" class="is-splashing no-overflow">
+<html lang="pt-br" class="roboto is-splashing no-overflow">
 <meta charset="UTF-8">
 <title>Raiz do Brasil</title>
 <meta name="viewport"
@@ -14,7 +14,7 @@
 <script src="dist/js/html5shiv-printshiv.js"></script>
 <script src="dist/js/classList.min.js"></script>
 <![endif]-->
-<body>
+<script id="maps-script"></script>
 
 <div id="keep-frame" class="Splash Next Next--raiz is-active is-visible">
 
@@ -277,7 +277,73 @@
 
 	</article>
 
+	<article id="reps" class="Block Block--reps Reps flex flex-column child-width-100" data-history-id="representantes">
+
+	</article>
+
 	<article id="contact" class="Block Block--contact Contact flex flex-wrap child-width-100" data-history-id="contato">
+
+		<section class="Container flex flex-wrap">
+
+			<section id="contact-form" class="ContactForm flex flex-column">
+
+				<div class="Contact-title">
+					<h1>Entre em contato conosco</h1>
+				</div>
+
+				<div class="ContactForm-wrapper ContactForm-wrapper--personal-info flex flex-column">
+
+					<div class="ContactForm-field ContactForm-field--name">
+						<input class="name-text" type="text" size="26" name="tNome" id="cNome" maxlength="50"
+						       placeholder="Nome"
+						       title="Ops, o campo nome deve ser preenchido corretamente :)"
+						       x-moz-errormessage="Ops, o campo nome deve ser preenchido corretamente :)"/>
+						<label class="name" for="cNome">Nome</label>
+					</div>
+
+					<div class="ContactForm-field ContactForm-field--email">
+						<input class="email-text" type="text" size="26" name="tEmail" id="cPhone" maxlength="60"
+						       placeholder="Telefone"
+						       title="Ops, o campo email deve ser preenchido corretamente :)"
+						       x-moz-errormessage="Ops, o campo email deve ser preenchido corretamente :)"/>
+						<label class="phone" for="cPhone">Email</label>
+					</div>
+
+					<div class="ContactForm-field ContactForm-field--email">
+						<input class="email-text" type="email" size="26" name="tEmail" id="cEmail" maxlength="60"
+						       placeholder="E-mail"
+						       title="Ops, o campo email deve ser preenchido corretamente :)"
+						       x-moz-errormessage="Ops, o campo email deve ser preenchido corretamente :)"/>
+						<label class="email" for="cEmail">Email</label>
+					</div>
+
+				</div>
+
+				<div class="ContactForm-wrapper ContactForm-wrapper--personal-info flex flex-column">
+
+					<div class="ContactForm-field ContactForm-field--message">
+					<textarea class="lato" name="tMensagem" id="cMensagem" cols="36"
+					          placeholder="Digite a sua mensagem"
+					          title="Ops, o campo mensagem deve ser preenchido corretamente :)"
+					          x-moz-errormessage="Ops, o campo mensagem deve ser preenchido corretamente :)"></textarea>
+						<label class="text-message" for="cMensagem">Mensagem</label>
+					</div>
+
+					<div class="ContactForm-field ContactForm-field--submit flex align-end">
+						<input id="cSubmit" class="ContactForm-submit" name="ir" type="submit" value="Enviar"/>
+					</div>
+
+				</div>
+
+			</section>
+
+			<section class="ContactMap flex flex-column">
+
+				<div id="local-map" class="ContactMap-map brown"></div>
+
+			</section>
+
+		</section>
 
 	</article>
 
@@ -312,33 +378,171 @@
 <script src="dist/js/raiz-do-brasil.js"></script>
 <script>
 
+	var RaizDoBrasil = (function() {
 
-	var logo = new Logo(document.getElementById('logo'), {
-		header: document.getElementById('header-logo-area')
-	});
+		var repsData = [
+			{
+				name: 'promafa',
+				title: 'PROMAFA - Produtos de Mandioca FADEL LTDA.',
+				address: 'R. São Paulo, 43, Palmital - SP, 19970-000, Brasil',
+				city: 'palmital',
+				state: 'sp',
+				zip: '19970-000',
+				country: 'brasil',
+				phone: '+55 18 3351 5050',
+				email: {
+					string: 'rep@promafa.com.br',
+					url: 'mailto:rep@promafa.com.br'
+				},
+				website: {
+					string: 'www.promafa.com.br',
+					url: 'http://www.promafa.com.br'
+				},
+				position: {
+					lat: -22.7753073,
+					lng: -50.2077834
+				}
+			}
+		];
 
-	// Main layout instance
-	var layout = new Layout(document.getElementById('main'));
+		var mapsScript = document.getElementById('maps-script');
 
-	var keep = new Keep(false, document.getElementById('keep-frame'), {
-		animationTime: 3000,
-		animationTimeDelay: 500,
-		postFinish: function() {
-			logo.appendToHeader();
-			document.documentElement.classList.remove('is-splashing');
-			setTimeout(function() {
-				document.documentElement.classList.remove('no-overflow');
-			}, 600);
+		var center = {
+			lat: -22.7753073,
+			lng: -50.2077834
+		};
+
+		function RaizDoBrasil() {
+
+			var self = this;
+
+			this.logo = new Logo(document.getElementById('logo'), {
+				header: document.getElementById('header-logo-area')
+			});
+
+			this.keep = new Keep(false, document.getElementById('keep-frame'), {
+				animationTime: 3000,
+				animationTimeDelay: 500,
+				postFinish: function() {
+					self.logo.appendToHeader();
+					document.documentElement.classList.remove('is-splashing');
+					setTimeout(function() {
+						document.documentElement.classList.remove('no-overflow');
+					}, 600);
+				}
+			});
+
+			// Nav instance
+			this.nav = new Nav([
+				{
+					menuItem: document.getElementById('about-anchor'),
+					fallback: function() {
+						self.layout.showBlock('about', false);
+					}
+				},
+				{
+					menuItem: document.getElementById('products-anchor'),
+					fallback: function() {
+						self.layout.showBlock('products', false);
+					}
+				},
+				{
+					menuItem: document.getElementById('reps-anchor'),
+					fallback: function() {
+						self.layout.showBlock('reps', false);
+					}
+				},
+				{
+					menuItem: document.getElementById('contact-anchor'),
+					fallback: function() {
+						self.layout.showBlock('contact', false);
+					}
+				}
+			], document.documentElement);
+
+			// Main layout instance
+			this.layout = new Layout(document.getElementById('main'));
+
+			this.anchor = new Anchor([
+				{
+					anchor: 'contato',
+					fallback: function() {
+						self.layout.showBlock('contact', false);
+						self.local.open();
+					}
+				},
+				{
+					anchor: 'representantes',
+					fallback: function() {
+						self.layout.showBlock('reps', false);
+					}
+				},
+				{
+					anchor: 'sobre',
+					fallback: function() {
+						self.layout.showBlock('about', false);
+					}
+				},
+				{
+					anchor: 'produtos',
+					fallback: function() {
+						self.layout.showBlock('products', false);
+					}
+				}
+			], function() {
+				self.layout.showBlock('about', false);
+			});
+
+			// Contact Form
+			this.contactForm = new Contact(document.getElementById('contact-form'), {
+				url: 'i/mail/'
+			});
+
+			// Maps instance
+			this.mapLocal = new Maps(document.getElementById('local-map'), mapsScript, {
+				scrollwheel: false,
+				center: center,
+				zoom: 15
+			});
+
+			// Local instance
+			this.local = new Local(this.mapLocal, false, document.getElementById('contact-anchor'));
+
 		}
-	});
 
-	keep.init();
+		RaizDoBrasil.prototype.init = function() {
 
-	layout.init();
+			this.keep.init();
 
+			this.layout.init();
+
+			this.anchor.init();
+
+			this.nav.init();
+
+			this.contactForm.init();
+
+			this.local.init();
+
+		};
+
+		return RaizDoBrasil;
+
+	})();
 
 </script>
 
-</body>
+<script>
+
+	var raizdobrasil = new RaizDoBrasil();
+
+	// init all the shit!
+	raizdobrasil.init();
+
+</script>
+
+<script>
+
+</script>
 
 </html>
