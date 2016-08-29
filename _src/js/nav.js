@@ -1,4 +1,5 @@
-/* Mowe Nav */
+
+/* Nav */
 
 var Nav = (function() {
 
@@ -26,8 +27,12 @@ var Nav = (function() {
 	 */
 	Nav.prototype.processItem = function(item) {
 
-		item.menuItem.fallback = item.fallback;
-		addListener(item.menuItem, 'click', 'onclick', this.itemClickCtrl, false);
+		if (item) {
+
+			item.menuItem.fallback = item.fallback;
+			addListener(item.menuItem, 'click', 'onclick', this.itemClickCtrl, false);
+
+		}
 
 	};
 

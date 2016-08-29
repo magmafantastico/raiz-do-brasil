@@ -1,0 +1,49 @@
+
+/* Main */
+
+.Main {
+	width: 100%;
+	-webkit-transition: opacity .75s ease .75s, height 2s ease 0s;
+	-moz-transition: opacity .75s ease .75s, height 2s ease 0s;
+	-ms-transition: opacity .75s ease .75s, height 2s ease 0s;
+	-o-transition: opacity .75s ease .75s, height 2s ease 0s;
+	transition: opacity .75s ease .75s, height 2s ease 0s;
+	position: relative;
+	overflow: hidden;
+}
+
+.is-splashing .Main {
+	opacity: 0;
+}
+
+/* Main background */
+
+.Main-background {
+	height: 100%;
+	left: 0;
+	top: 0;
+	width: 100%;
+	position: absolute;
+}
+
+.is-landscape .Main-background {
+	background-color: #C1B89C;
+	background-image: url("../img/background-texture-01.png");
+	background-position: center 1em;
+	background-repeat: repeat-x;
+}
+
+/* Main inner */
+
+.Main-inner {
+	left: 0;
+	overflow: hidden;
+	position: relative;
+	top: 0;
+	-webkit-transition: opacity .75s ease .75s, height 2s ease 0s;
+	-moz-transition: opacity .75s ease .75s, height 2s ease 0s;
+	-ms-transition: opacity .75s ease .75s, height 2s ease 0s;
+	-o-transition: opacity .75s ease .75s, height 2s ease 0s;
+	transition: opacity .75s ease .75s, height 2s ease 0s;
+	width: 100%;
+}

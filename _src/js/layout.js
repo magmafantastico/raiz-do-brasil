@@ -1,16 +1,13 @@
-/*!
- * Raiz do Brasil Layout v1.0.0 (http://letsmowe.org/)
- * Copyright 2013-2015 Noibe Developers
- * Licensed under MIT (https://github.com/noibe/villa/blob/master/LICENSE)
- */
+
+/* Layout */
 
 var Layout = (function() {
 
-	function Layout(viewport) {
+	function Layout(element) {
 
 		var self = this;
 
-		this.viewport = viewport;
+		this.element = element;
 
 		this.activeBlock = false;
 
@@ -27,7 +24,10 @@ var Layout = (function() {
 	 */
 	Layout.prototype.resizeMain = function () {
 
-		this.viewport.style.height = this.activeBlock.offsetHeight + 'px';
+		if (this.inner)
+			this.inner.style.height = this.activeBlock.offsetHeight + 'px';
+		else
+			this.element.style.height = this.activeBlock.offsetHeight + 'px';
 
 	};
 
@@ -65,8 +65,6 @@ var Layout = (function() {
 	Layout.prototype.resetClass = function(c) {
 
 		var classList = c ? typeof c == 'string' ? [c] : c : [];
-
-		console.log(classList);
 
 		for (var i = this.block.length; i--; )
 			for (var j = classList.length; j--; )
@@ -143,18 +141,18 @@ var Layout = (function() {
 
 		var currentActive;
 
-		if (currentActive = this.viewport.querySelector('.Block.is-active'))
+		if (currentActive = this.element.querySelector('.Block.is-active'))
 			this.showBlock(currentActive, true);
 
 	};
 
 	/**
-	 * Get the blocks (with .Block class) from the Layout Viewport
+	 * Get the blocks (with .Block class) from the Layout element
 	 * @return {*}
 	 */
 	Layout.prototype.getBlocks = function() {
 
-		var blocks = this.viewport.querySelectorAll('.Block');
+		var blocks = this.element.querySelectorAll('.Block');
 
 		this.block = blocks ? [] : false;
 
@@ -169,7 +167,15 @@ var Layout = (function() {
 
 	};
 
+	Layout.prototype.getElements = function () {
+
+		this.inner = this.element.querySelector('.Main-inner');
+
+	};
+
 	Layout.prototype.init = function() {
+
+		this.getElements();
 
 		if (this.getBlocks()) {
 
