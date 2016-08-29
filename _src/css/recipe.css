@@ -1,0 +1,80 @@
+
+/* Recipe */
+
+.Recipe {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: column;
+	flex-flow: column;
+	position: relative;
+	margin-bottom: 1em;
+	width: 100%;
+	padding: 1em;
+}
+
+/* Recipe h5 */
+
+.Recipe h5 {
+	font-size: 1em;
+}
+
+/* Recipe li (ingredients list item) */
+
+.Recipe li {
+	font-size: .875em;
+}
+
+/* Recipe p */
+
+.Recipe p {
+	font-size: .875em;
+	max-width: none;
+}
+
+/* Recipe ul (ingredients list) */
+
+.Recipe ul {
+	margin-bottom: 1em;
+}
+
+/* Recipe header */
+
+.Recipe-header {
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: column;
+	flex-flow: column;
+	-webkit-justify-content: flex-end;
+	justify-content: flex-end;
+	margin-bottom: 1em;
+}
+
+/* Recipe title */
+
+.Recipe-title {
+	visibility: hidden;
+}
+
+/* Recipe figure */
+
+.Recipe-image {
+	display: none;
+}
+
+@media (min-width: 60em) {
+
+	.Recipe {
+		width: 50%;
+	}
+
+}

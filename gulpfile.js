@@ -131,12 +131,14 @@ gulp.task('js-watch', ['js'], function () {
 // IMAGES
 
 gulp.task('resizePhotos', function () {
-	gulp.src(source.images.location + source.images.content)
+	console.log('./' + source.images.location + 'product/*.png');
+	console.log('./' + source.images.location + 'p/');
+	gulp.src('./' + source.images.location + 'product/*.png')
 		.pipe(imageResize({
-			height : 960,
+			height : 720,
 			upscale : false
 		}))
-		.pipe(gulp.dest(dist.location + source.images.largePhotos.location));
+		.pipe(gulp.dest('./' + source.images.location + 'p/'));
 });
 
 gulp.task('tinyPhotosSource', function () {
@@ -161,6 +163,7 @@ gulp.task('serve', function () {
 				"/sobre": "public/index.html",
 				"/contato": "public/index.html",
 				"/produtos": "public/index.html",
+				"/receitas": "public/index.html",
 				"/home": "public/index.html"
 			}
 		}

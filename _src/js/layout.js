@@ -25,9 +25,9 @@ var Layout = (function() {
 	Layout.prototype.resizeMain = function () {
 
 		if (this.inner)
-			this.inner.style.height = this.activeBlock.offsetHeight + 'px';
+			this.inner.style.minHeight = this.activeBlock.offsetHeight + 'px';
 		else
-			this.element.style.height = this.activeBlock.offsetHeight + 'px';
+			this.element.style.minHeight = this.activeBlock.offsetHeight + 'px';
 
 	};
 
